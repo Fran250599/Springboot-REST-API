@@ -5,14 +5,14 @@ import java.time.LocalDate;
 public class Product {
     private long id;
     private String name;
-    private String price;
+    private int price;
     private LocalDate date;
     private int age;
 
     public Product() {
     }
 
-    public Product(long id, String name, String price, LocalDate date, int age) {
+    public Product(long id, String name, int price, LocalDate date, int age) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -36,11 +36,11 @@ public class Product {
         this.name = name;
     }
 
-    public String getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
@@ -60,7 +60,7 @@ public class Product {
         this.age = age;
     }
 
-    public Product(String name, String price, LocalDate date, int age) {
+    public Product(String name, int price, LocalDate date, int age) {
         this.name = name;
         this.price = price;
         this.date = date;

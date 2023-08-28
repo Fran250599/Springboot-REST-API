@@ -2,12 +2,7 @@ package com.francisco.crud;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
-@RestController
 @SpringBootApplication
 public class CrudApplication {
 
@@ -15,13 +10,6 @@ public class CrudApplication {
 		SpringApplication.run(CrudApplication.class, args);
 	}
 
-	@GetMapping(path = "/ ")
-	public List<String> getNames(){
-		return List.of(
-				"Francisco",
-				"Camila",
-				"Alex"
-		);
-	}
+
 
 }
