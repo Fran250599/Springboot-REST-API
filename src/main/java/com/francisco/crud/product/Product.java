@@ -1,8 +1,15 @@
 package com.francisco.crud.product;
 
+import jakarta.persistence.*;
+import org.springframework.context.annotation.Primary;
+
 import java.time.LocalDate;
 
+@Entity
+@Table
 public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
     private int price;
