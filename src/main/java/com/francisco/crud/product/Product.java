@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import org.springframework.context.annotation.Primary;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 @Entity
 @Table
@@ -14,17 +15,17 @@ public class Product {
     private String name;
     private int price;
     private LocalDate date;
+    @Transient
     private int age;
 
     public Product() {
     }
 
-    public Product(long id, String name, int price, LocalDate date, int age) {
+    public Product(long id, String name, int price, LocalDate date) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.date = date;
-        this.age = age;
     }
 
     public long getId() {
@@ -60,7 +61,7 @@ public class Product {
     }
 
     public int getAge() {
-        return age;
+        return Period.between(this.date, LocalDate.now()).getYears();
     }
 
     public void setAge(int age) {
@@ -71,6 +72,5 @@ public class Product {
         this.name = name;
         this.price = price;
         this.date = date;
-        this.age = age;
     }
 }
