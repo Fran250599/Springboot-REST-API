@@ -1,11 +1,14 @@
 package com.francisco.crud.product;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,12 +27,26 @@ public class ProductService {
         return this.productRepository.findAll();
     }
 
-    public void newProduct(Product product) {
+    public ResponseEntity<Object> newProduct(Product product) {
 
         Optional<Product> res = productRepository.findProductByName(product.getName());
+        HashMap<String, Object> data = new HashMap<>();
+
         if(res.isPresent()){
-            throw new IllegalStateException("Ya existe el producto.");
+            data.put("Error", true);
+            data.put("Message", "Ya existe un producto con este nombre.");
+            return new ResponseEntity<>(
+                    data,
+                    HttpStatus.CONFLICT
+            );
         }
+
+        data.put("Dato agregado:", product);
+        data.put("Message", "Producto creado.");
         productRepository.save(product);
+        return new ResponseEntity<>(
+                data,
+                HttpStatus.CREATED
+        );
     }
 }
