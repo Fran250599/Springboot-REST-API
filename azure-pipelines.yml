@@ -1,0 +1,38 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- powershell: |
+    $org = "AppCenter-Tests"
+    $project = "DistributioniOS1"
+    $id = "2"
+    $pat = "aynkdgnib56t6zkrap6ia6ewnqwvfhpwnf6smcebfdqzeo23fcma"
+    $apiUrl = "https://dev.azure.com/$org/$project/_apis/wit/attachments/$id?api-version=7.0"
+
+    $header = @{
+        Authorization = "Basic " + [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(":$($pat)"))
+    }
+
+    try {
+        $response = Invoke-RestMethod -Uri $apiUrl -Headers $header -Method Get
+        Write-Host "Attachment Data:`n$($response | ConvertTo-Json -Depth 10)"
+        # You can process the attachment data here as needed.
+    } catch {
+        Write-Error "Error retrieving attachment: $_"
+        exit 1
+    }
+  displayName: 'Get Attachment from Azure DevOps API'
+- script: Working!
+  displayName: 'Run a multi-line script'
+  
