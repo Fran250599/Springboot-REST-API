@@ -1,5 +1,7 @@
-package com.francisco.crud.product;
+package com.francisco.crud.controller;
 
+import com.francisco.crud.model.Product;
+import com.francisco.crud.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

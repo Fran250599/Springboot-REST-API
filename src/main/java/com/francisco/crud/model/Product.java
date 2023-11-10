@@ -1,4 +1,4 @@
-package com.francisco.crud.product;
+package com.francisco.crud.model;
 
 import jakarta.persistence.*;
 import org.springframework.context.annotation.Primary;

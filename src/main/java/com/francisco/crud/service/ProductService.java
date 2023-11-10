@@ -1,13 +1,13 @@
-package com.francisco.crud.product;
+package com.francisco.crud.service;
 
+import com.francisco.crud.model.Product;
+import com.francisco.crud.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.time.LocalDate;
-import java.time.Month;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;

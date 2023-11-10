@@ -1,7 +1,7 @@
-package com.francisco.crud.product;
+package com.francisco.crud.repository;
 
+import com.francisco.crud.model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
