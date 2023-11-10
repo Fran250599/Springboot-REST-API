@@ -11,30 +11,35 @@ import java.time.Period;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long PLU;
     @Column(unique = true)
     private String name;
+    private String EAN;
     private int price;
-    private LocalDate date;
-    @Transient
-    private int age;
+    private String description;
+
+    private float weight;
+    private float stock;
 
     public Product() {
     }
 
-    public Product(long id, String name, int price, LocalDate date) {
-        this.id = id;
+    public Product(long PLU, String name, String EAN, int price, String description, float weight, float stock) {
+        this.PLU = PLU;
         this.name = name;
+        this.EAN = EAN;
         this.price = price;
-        this.date = date;
+        this.description = description;
+        this.weight = weight;
+        this.stock = stock;
     }
 
-    public long getId() {
-        return id;
+    public long getPLU() {
+        return PLU;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setPLU(long PLU) {
+        this.PLU = PLU;
     }
 
     public String getName() {
@@ -45,6 +50,14 @@ public class Product {
         this.name = name;
     }
 
+    public String getEAN() {
+        return EAN;
+    }
+
+    public void setEAN(String EAN) {
+        this.EAN = EAN;
+    }
+
     public int getPrice() {
         return price;
     }
@@ -53,25 +66,27 @@ public class Product {
         this.price = price;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public int getAge() {
-        return Period.between(this.date, LocalDate.now()).getYears();
+    public float getWeight() {
+        return weight;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setWeight(float weight) {
+        this.weight = weight;
     }
 
-    public Product(String name, int price, LocalDate date, int age) {
-        this.name = name;
-        this.price = price;
-        this.date = date;
+    public float getStock() {
+        return stock;
+    }
+
+    public void setStock(float stock) {
+        this.stock = stock;
     }
 }
