@@ -29,6 +29,28 @@ public class ProductService {
         return productRepository.findAll();
     }
 
+    // Get product by id
+    public ResponseEntity<Object> getProductById(Long id) {
+
+        Optional<Product> res = productRepository.findById(id);
+        HashMap<String, Object> data = new HashMap<>();
+
+        if(res.isPresent()){
+            data.put("Dato encontrado:", res.get());
+            data.put("Message", "Producto encontrado.");
+            return new ResponseEntity<>(
+                    data,
+                    HttpStatus.OK
+            );
+        }
+
+        data.put("Error", true);
+        data.put("Message", "No existe un producto con este id.");
+        return new ResponseEntity<>(
+                data,
+                HttpStatus.NOT_FOUND
+        );
+    }
     public ResponseEntity<Object> newProduct(Product product) {
 
         Optional<Product> res = productRepository.findProductByName(product.getName());
