@@ -12,20 +12,18 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long PLU;
-    @Column(unique = true)
     private String name;
     private String EAN;
     private int price;
     private String description;
 
     private float weight;
-    private float stock;
+    private int stock;
 
     public Product() {
     }
+    public Product(String name, String EAN, int price, String description, float weight, int stock) {
 
-    public Product(long PLU, String name, String EAN, int price, String description, float weight, float stock) {
-        this.PLU = PLU;
         this.name = name;
         this.EAN = EAN;
         this.price = price;
@@ -82,11 +80,11 @@ public class Product {
         this.weight = weight;
     }
 
-    public float getStock() {
+    public int getStock() {
         return stock;
     }
 
-    public void setStock(float stock) {
+    public void setStock(int stock) {
         this.stock = stock;
     }
 }

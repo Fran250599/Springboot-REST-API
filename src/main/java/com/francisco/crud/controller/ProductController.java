@@ -10,7 +10,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping(path = "api/v1/products")
+@RequestMapping(path = "products")
 public class ProductController {
     private final ProductService productService;
 
@@ -21,8 +21,6 @@ public class ProductController {
 
     @GetMapping
     public List<Product> getProducts(){
-        List<Product> products = productService.getProducts();
-
         return productService.getProducts();
     }
 
@@ -31,6 +29,17 @@ public class ProductController {
         return productService.newProduct(product);
     }
 
-    
+    @PutMapping(path = "/{id}")
+    public ResponseEntity<Object> updateProduct(@PathVariable("id") Long id, @RequestBody Product product){
+        return productService.updateProduct(id, product);
+    }
+
+    @DeleteMapping(path = "/{id}")
+    public ResponseEntity<Object> deleteProduct(@PathVariable("id") Long id){
+        return productService.deleteProduct(id);
+    }
+
+
+
 
 }
