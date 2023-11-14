@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:5173")
 @RequestMapping(path = "users")
 public class UserController {
 
@@ -27,6 +28,12 @@ public class UserController {
     @GetMapping(path = "/{id}")
     public ResponseEntity<Object> getUserById( @PathVariable Long id){
         return userService.getUserById(id);
+    }
+
+    // Login user
+    @PostMapping(path = "/login")
+    public ResponseEntity<Object> loginUser(@RequestBody User user){
+        return userService.loginUser(user);
     }
 
     @PostMapping

@@ -68,6 +68,36 @@ public class UserService {
         );
     }
 
+    // Login user
+    public ResponseEntity<Object> loginUser(User user){
+        Optional<User> res = userRepository.findUserByUsername(user.getUsername());
+        HashMap<String, Object> data = new HashMap<>();
+
+        if(res.isPresent()){
+            if(user.getPassword().equals(user.getPassword())){
+                data.put("Message", "Usuario logueado.");
+                data.put("Dato logueado:", user);
+                return new ResponseEntity<>(
+                        data,
+                        HttpStatus.OK
+                );
+            }
+            data.put("Error", true);
+            data.put("Message", "Contraseña incorrecta.");
+            return new ResponseEntity<>(
+                    data,
+                    HttpStatus.UNAUTHORIZED
+            );
+        }
+        data.put("Error", true);
+        data.put("Message", "No existe un usuario con este nombre de usuario.");
+        return new ResponseEntity<>(
+                data,
+                HttpStatus.NOT_FOUND
+        );
+    }
+
+
     // Update user
     public ResponseEntity<Object> updateUser(Long id, User user){
         Optional<User> res = userRepository.findById(id);
