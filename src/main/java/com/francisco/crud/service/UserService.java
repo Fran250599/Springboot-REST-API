@@ -77,6 +77,10 @@ public class UserService {
             if(user.getPassword().equals(user.getPassword())){
                 data.put("Message", "Usuario logueado.");
                 data.put("Dato logueado:", user);
+                // Retrieves user role
+                User auxUser = userRepository.findUserByUsername(user.getUsername()).get();
+                data.put("Role", auxUser.getRole());
+
                 return new ResponseEntity<>(
                         data,
                         HttpStatus.OK
