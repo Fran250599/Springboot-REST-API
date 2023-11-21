@@ -3,7 +3,7 @@ package com.francisco.crud.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table
+@Table(name = "`facturasBaratico`")
 public class Bill {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

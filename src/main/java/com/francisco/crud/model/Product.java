@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.time.Period;
 
 @Entity
-@Table
+@Table(name = "`productosBaratico`")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
