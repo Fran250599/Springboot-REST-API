@@ -74,12 +74,12 @@ public class UserService {
         HashMap<String, Object> data = new HashMap<>();
 
         if(res.isPresent()){
-            if(user.getPassword().equals(user.getPassword())){
+            if(user.getPassword().equals(res.get().getPassword())){
                 data.put("Message", "Usuario logueado.");
-                data.put("Dato logueado:", user);
                 // Retrieves user role
                 User auxUser = userRepository.findUserByUsername(user.getUsername()).get();
-                data.put("Role", auxUser.getRole());
+                data.put("role", auxUser.getRole());
+                data.put("PLU", auxUser.getId());
 
                 return new ResponseEntity<>(
                         data,
