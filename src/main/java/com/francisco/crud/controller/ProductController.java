@@ -10,8 +10,8 @@ import java.util.List;
 
 
 @RestController
-@CrossOrigin(origins = "http://localhost:5173")
 @RequestMapping(path = "products")
+@CrossOrigin(origins = "http://127.0.0.1:5173")
 public class ProductController {
     private final ProductService productService;
 
@@ -29,7 +29,11 @@ public class ProductController {
     public ResponseEntity<Object> getProductById(@PathVariable("id") Long id){
         return productService.getProductById(id);
     }
+
+
+
     @PostMapping
+    @CrossOrigin(origins = "http://localhost:5173")
     public ResponseEntity<Object> registerProduct(@RequestBody Product product){
         return productService.newProduct(product);
     }
