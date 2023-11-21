@@ -47,7 +47,7 @@ public class BillService {
 
     public ResponseEntity<Object> newBill(Bill bill){
 
-        Optional<Bill> res = billRepository.findBillByBillNumber(bill.getBillNumber());
+        Optional<Bill> res = billRepository.findById(bill.getId());
         HashMap<String, Object> data = new HashMap<>();
 
         if(res.isPresent()){
@@ -65,7 +65,7 @@ public class BillService {
 
     public ResponseEntity<Object> updateBill(Long id, Bill bill){
 
-        Optional<Bill> res = billRepository.findBillByBillNumber(id);
+        Optional<Bill> res = billRepository.findById(id);
         HashMap<String, Object> data = new HashMap<>();
 
         if(res.isPresent()){
@@ -81,7 +81,7 @@ public class BillService {
 
     public ResponseEntity<Object> deleteBill(Long id){
 
-        Optional<Bill> res = billRepository.findBillByBillNumber(id);
+        Optional<Bill> res = billRepository.findById(id);
         HashMap<String, Object> data = new HashMap<>();
 
         if(res.isPresent()){

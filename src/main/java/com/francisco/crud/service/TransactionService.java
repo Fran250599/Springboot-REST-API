@@ -80,7 +80,7 @@ public class TransactionService {
         if (res.isPresent()){
             // Update transaction with new data
             res.get().setTransactionNumber(transaction.getTransactionNumber());
-            res.get().setDate(transaction.getDate());
+            //res.get().setDate(transaction.getDate());
             res.get().setTime(transaction.getTime());
 
             data.put("Message", "Transacción actualizada.");

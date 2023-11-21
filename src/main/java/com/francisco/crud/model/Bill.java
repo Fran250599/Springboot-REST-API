@@ -1,42 +1,47 @@
 package com.francisco.crud.model;
 
 import jakarta.persistence.*;
+import java.math.BigDecimal;
 
+
+// Bill Entity for Oracle DB
 @Entity
-@Table(name = "`facturasBaratico`")
+@Table(name = "BILL")
 public class Bill {
+
+    // Oracle friendly table with next fields: long id, String articleDetail, int quantity, BigDecimal subTotal, BigDecimal total, String cashier, String fecha, String hora
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long billNumber;
+    private long id;
 
     private String articleDetail;
     private int quantity;
-    private float subtotal;
-    private float total;
+    private BigDecimal subTotal;
+    private BigDecimal total;
     private String cashier;
-    private String date;
-    private String time;
+    private String fecha;
+    private String hora;
 
     public Bill() {
     }
 
-    public Bill(String articleDetail, int quantity, float subtotal, float total, String cashier, String date, String time) {
-        this.billNumber = billNumber;
+    public Bill(long id, String articleDetail, int quantity, BigDecimal subTotal, BigDecimal total, String cashier, String fecha, String hora) {
+        this.id = id;
         this.articleDetail = articleDetail;
         this.quantity = quantity;
-        this.subtotal = subtotal;
+        this.subTotal = subTotal;
         this.total = total;
         this.cashier = cashier;
-        this.date = date;
-        this.time = time;
+        this.fecha = fecha;
+        this.hora = hora;
     }
 
-    public long getBillNumber() {
-        return billNumber;
+    public long getId() {
+        return id;
     }
 
-    public void setBillNumber(long billNumber) {
-        this.billNumber = billNumber;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getArticleDetail() {
@@ -55,19 +60,19 @@ public class Bill {
         this.quantity = quantity;
     }
 
-    public float getSubtotal() {
-        return subtotal;
+    public BigDecimal getSubTotal() {
+        return subTotal;
     }
 
-    public void setSubtotal(float subtotal) {
-        this.subtotal = subtotal;
+    public void setSubTotal(BigDecimal subTotal) {
+        this.subTotal = subTotal;
     }
 
-    public float getTotal() {
+    public BigDecimal getTotal() {
         return total;
     }
 
-    public void setTotal(float total) {
+    public void setTotal(BigDecimal total) {
         this.total = total;
     }
 
@@ -79,19 +84,19 @@ public class Bill {
         this.cashier = cashier;
     }
 
-    public String getDate() {
-        return date;
+    public String getFecha() {
+        return fecha;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
 
-    public String getTime() {
-        return time;
+    public String getHora() {
+        return hora;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setHora(String hora) {
+        this.hora = hora;
     }
 }
