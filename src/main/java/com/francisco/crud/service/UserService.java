@@ -80,7 +80,7 @@ public class UserService {
                 User auxUser = userRepository.findUserByUsername(user.getUsername()).get();
                 data.put("role", auxUser.getRole());
                 data.put("PLU", auxUser.getId());
-
+                data.put("username", auxUser.getUsername());
                 return new ResponseEntity<>(
                         data,
                         HttpStatus.OK
